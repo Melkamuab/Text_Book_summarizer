@@ -1,0 +1,43 @@
+{%extends "base.html"%}
+{%block content%}
+{%if user.is_authenticated%}
+    <h1>Welcome back : {{user.username}}</h1>
+{%else%}
+    <h1>Login or create an account to use our features.</h1>
+{%endif%}
+<form action="" method="POST">
+    {%csrf_token%}
+<div class="row">
+    <div class="col">
+        <div class="form-group">
+            <label>
+                input
+            </label>
+            <textarea class="form-control" name="input" rows="10">
+                {{input}}
+            </textarea>
+        </div>
+    </div>
+    <div class="col">
+        <div class="form-group">
+            <label>
+                output
+            </label>
+            <textarea class="form-control" name="output" rows="10" readonly="True">
+                {{output}}
+            </textarea>
+        </div>
+    </div>
+</div>
+    <select class="dropdown" name="summarize_type">
+        {%for summarizer in summarizers%}
+            <option class="dropdown-item" value="{{summarizer}}">{{summarizer}}</option>
+        {%endfor%}
+    </select >
+    <button type="submit" class="btn btn-primary">
+        summarize
+    </button>
+
+</form>
+{%endblock content%}
+

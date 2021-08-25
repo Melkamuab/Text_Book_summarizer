@@ -1,0 +1,35 @@
+{%extends 'base.html'%}
+{%block content%}
+
+{%if error%}
+    <a href="{%url 'RemoveMultipleBook'%}">
+        cancel
+    </a>
+{%endif%}
+
+{%if completed%}
+    <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: 30%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+    </div>
+    <a href="{%url 'RemoveMultipleBook'%}" class="btn btn-outline">
+        Cancel
+    </a>
+    <a href="{%url 'UploadMultipleBook'%}" class="btn btn-outline">
+        Prev
+    </a>
+    <a href="{%url 'SummarizeMultipleBook'%}" class="btn btn-outline">
+        Next
+    </a>
+{%else%}
+<form action="" method="POST">
+    {%csrf_token%}
+    {{form.as_p}}
+    <button type="submit">
+        Search
+    </button>
+</form>
+{%endif%}
+{%endblock%}
+
+
+

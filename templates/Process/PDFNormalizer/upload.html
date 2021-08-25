@@ -1,0 +1,27 @@
+{%extends 'base.html'%}
+{%block content%}
+{%if error%}
+    <a href="" class="btn btn-primary">
+        cancel
+    </a>
+{%elif completed%}
+    <p>
+        You already have uploaded file
+        <br>
+        <a href="{%url 'RemoveBrokenBook'%}" class="btn btn-primary">
+            cancel
+        </a>
+        <a href="{%url 'ReadBrokenBook'%}" class="btn btn-primary">
+            Next
+        </a>
+    </p>
+{%else%}
+    <form action="" method="post" enctype="multipart/form-data">
+        {%csrf_token%}
+        {{form.as_p}}
+        <input id="FileSub" type="submit" name="upload" value="Upload">
+    </form>
+{%endif%}
+
+{%endblock content%}
+

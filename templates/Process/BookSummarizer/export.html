@@ -1,0 +1,31 @@
+{%extends 'base.html'%}
+{%block content%}
+
+{%if error%}
+    <a href="{%url 'ReadSingleBook'%}">
+        Prev
+    </a>
+    <a href="{%url 'RemoveSingleBook'%}">
+        cancel
+    </a>
+
+{%elif completed%}
+    Your uploaded file
+    <a href="{{download}}">Download</a>
+    <a href="{%url 'RemoveSingleBook'%}" class="button button-primary">
+        Summarize book
+    </a>
+{%else%}
+<form action="" method = "POST">
+    {%csrf_token%}
+    <select name="mode" id="">
+        <option value="PDF">PDF</option>
+        <option value="PPT">PPT</option>
+    </select>
+    <button type="submit">
+        Select
+    </button>
+</form>
+{%endif%}
+
+{%endblock content%}

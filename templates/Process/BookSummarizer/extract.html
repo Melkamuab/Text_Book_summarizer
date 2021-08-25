@@ -1,0 +1,50 @@
+{%extends 'base.html'%}
+{%block content%}
+
+{%if error%}
+    <a href="{%url 'RemoveSingleBook'%}">
+        cancel
+    </a>
+
+{%endif%}
+{%if completed%}
+<a href="{%url 'RemoveSingleBook'%}" class="btn btn-outline">
+    Cancel
+</a>
+<a href="{%url 'ReadSingleBook'%}" class="btn btn-outline">
+    Prev
+</a>
+<a href="{%url 'HeadingSingleBook'%}" class="btn btn-outline">
+    Next
+</a>
+<br>
+<a href="#" name="Inaccurate" class="button button-primary">
+    In accurate table of content
+</a>
+
+</form>
+{%else%}
+    <form action="" method="POST">
+        {%csrf_token%}
+    <legend>Choose the range document you want to be summarized</legend>
+    <lable>start:</lable>
+    <select name="start" id="">
+        {%for heading in headings%}
+            <option value="{{heading.1}}">{{heading.0}}</option>
+        {%endfor%}
+    </select>
+    <br>
+    <lable>end:</lable>
+    <select name="end" id="">
+        {%for heading in headings%}
+            <option value="{{heading.1}}">{{heading.0}}</option>
+        {%endfor%}
+    </select>
+    <br>
+    <button type="submit" class="btn btn-primary">
+        continue
+    </button>
+    
+{%endif%}
+
+{%endblock content%}

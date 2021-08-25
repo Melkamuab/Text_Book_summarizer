@@ -1,0 +1,31 @@
+{%extends "base.html"%}
+{%block content%}
+{%load crispy_forms_tags%}
+
+<form method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit" class="btn btn-outline-info">
+        Signin
+    </button>
+</form>
+
+<small>
+<div class="row">
+    <div class="col">
+        Have no account?
+        <a href="{url 'Signup'}" class="ml">
+            Signup
+        </a>
+    </div>
+    <div class="col">
+        Forgot an account ?
+        <a href="{%url 'ResetPassword'%}" class="btn btn-primary">
+            Reset password
+        </a>
+    </div>
+</div>
+
+</small>
+
+{%endblock content%}

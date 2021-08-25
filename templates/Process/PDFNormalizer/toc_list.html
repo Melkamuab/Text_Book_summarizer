@@ -1,0 +1,17 @@
+{%extends 'base.html'%}
+{%block content%}
+<table class="table table-striped table-bordered">
+    {%for row in toc%}
+    <tr>
+        <td>{{row.0}}</td>
+        <td>{{row.1}}</td>
+        <td>{{row.2}}</td>
+        </tr>
+        {%endfor%}    
+</table>
+
+<a class = "button" href="{%url 'ExportBrokenBook'%}">
+    Next
+</a>
+{%endblock content%}
+

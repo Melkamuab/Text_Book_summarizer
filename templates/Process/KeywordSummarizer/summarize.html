@@ -1,0 +1,37 @@
+{%extends 'base.html'%}
+{%block content%}
+
+{%if error%}
+    <a href="{%url 'RemoveMultipleBook'%}">
+        cancel
+    </a>
+{%elif completed%}
+    <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: 30%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+    </div>
+    <a href="{%url 'RemoveMultipleBook'%}" class="btn btn-outline">
+        Cancel
+    </a>
+    <a href="{%url 'ReadMultipleBook'%}" class="btn btn-outline">
+        Prev
+    </a>
+    <a href="{%url 'ExportMultipleBook'%}" class="btn btn-outline">
+        Next
+    </a>
+{%else%}
+<form action="" method="POST">
+    {%csrf_token%}
+    Choose summarizer
+    <hr>
+    <select name="summarizer" id="">
+        {%for summarizer in summarizers%}
+        <option value="{{summarizer}}">{{summarizer}}</option>
+        {%endfor%}
+    </select>
+    <button type="submit" class="btn btn-primary">
+        select
+    </button>
+</form>
+{%endif%}
+
+{%endblock%}

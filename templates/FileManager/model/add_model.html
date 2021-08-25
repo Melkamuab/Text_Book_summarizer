@@ -1,0 +1,14 @@
+{%extends 'base.html'%}
+{%load crispy_forms_tags%}
+{%block content%}
+{%block content_header%}
+<a href="{%url 'ShowModel'%}" class="btn btn-primary">Models</a>
+{%endblock content_header%}
+<form action="" method="post", enctype="multipart/form-data">
+    {%csrf_token%}
+    {{form.as_p }}
+    <input type="submit" value="upload">
+</form>
+{%endblock content%}
+
+

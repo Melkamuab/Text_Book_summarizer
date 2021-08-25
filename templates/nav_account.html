@@ -1,0 +1,37 @@
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item active">
+      <a class="nav-link" href="{%url 'Home'%}">Home <span class="sr-only">(current)</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{%url 'UploadSingleBook'%}">Book summarizer</a>
+      </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{%url 'UploadMultipleBook'%}">Keyword based summarizer</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{%url 'UploadBrokenBook'%}">PDF normalizer</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{%url 'AddModel'%}">Models</a>
+    </li>
+
+    {%if user.user_profile.acc_type == "Adm" %}
+      <li class="nav-item">
+        <a class="nav-link abled" href="/admin">Admin</a>
+      </li>
+    {%else%}
+      <li class="nav-item">
+        {{user.superuser}}
+      </li>
+    {%endif%}
+  </ul>
+    <div class="content-section">
+        <div class="media">
+            <a href="{%url 'Profile'%}" class="navbar-brand">
+                <img src="{{user.user_profile.profile.url}}" width="25px" alt="{{user.user_profile.profile.url}}" class="rounded-circle account-img">
+            </a>
+        </div>
+    </div>
+    <a class="navbar-brand" href="{%url 'Signout'%}">Signout</a>
+</div>
